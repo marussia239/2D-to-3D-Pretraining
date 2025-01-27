@@ -1,0 +1,57 @@
+Prolog...
+================================================================================
+Running on worker7. This worker has IP 134.60.70.127/24
+Running as marina, with groups: students docker
+Job ID: 24820
+CUDA_VISIBLE_DEVICES: 0
+Using CPU Cores 0-11
+Using 31000 MiB RAM
+================================================================================
+docker run -i --rm --pull=always --ipc=host -e XDG_CACHE_HOME=/tmp/cache --name slurm_24820 --cpuset-cpus 0-11 --memory 31000m --gpus '"device=0"' -w /mnt/hdd/marina/workspace/2D-to-3D-Pretraining/slurm_log -v /mnt/hdd/marina:/mnt/hdd/marina -p 0.0.0.0:9999:9999 pytorch/pytorch:latest bash -c '{ apt-get update;  DEBIAN_FRONTEND=noninteractive apt-get install -y sudo; python3 -m pip install -r requirements.txt; groupadd --gid 1004 students; useradd --uid 1052 -s /bin/bash --gid 1004 -m -d /mnt/hdd/marina marina; nvidia-smi -L; sudo --set-home --preserve-env=PATH --user=\#1052 -- ./start.sh; }'
+================================================================================
+latest: Pulling from pytorch/pytorch
+Digest: sha256:11691e035a3651d25a87116b4f6adc113a27a29d8f5a6a583f8569e0ee5ff897
+Status: Image is up to date for pytorch/pytorch:latest
+Get:1 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:4 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+Get:6 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+Get:7 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+Get:8 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+Get:9 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [2751 kB]
+Get:10 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [3475 kB]
+Get:11 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1515 kB]
+Get:12 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [53.3 kB]
+Get:13 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [33.8 kB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [81.4 kB]
+Get:15 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [2458 kB]
+Get:16 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [3331 kB]
+Get:17 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [45.2 kB]
+Get:18 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1226 kB]
+Fetched 35.3 MB in 1s (25.0 MB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  sudo
+0 upgraded, 1 newly installed, 0 to remove and 33 not upgraded.
+Need to get 821 kB of archives.
+After this operation, 2568 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 sudo amd64 1.9.9-1ubuntu2.4 [821 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 821 kB in 1s (1050 kB/s)
+Selecting previously unselected package sudo.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6643 files and directories currently installed.)
+Preparing to unpack .../sudo_1.9.9-1ubuntu2.4_amd64.deb ...
+Unpacking sudo (1.9.9-1ubuntu2.4) ...
+Setting up sudo (1.9.9-1ubuntu2.4) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.6) ...
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'requirements.txt'
+useradd: warning: the home directory /mnt/hdd/marina already exists.
+useradd: Not copying any file from skel directory into it.
+GPU 0: NVIDIA GeForce RTX 3090 (UUID: GPU-e26ecfb2-c76a-ca5d-4df5-3ae3909027e6)
+sudo: ./start.sh: command not found
+Error response from daemon: No such container: slurm_24820

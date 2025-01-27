@@ -1,0 +1,1031 @@
+Prolog...
+================================================================================
+Running on worker2. This worker has IP 134.60.70.133/24
+Running as marina, with groups: students docker
+Job ID: 25191
+CUDA_VISIBLE_DEVICES: 0
+Using CPU Cores 0-11
+Using 63000 MiB RAM
+================================================================================
+docker run -i --rm --pull=always --ipc=host -e XDG_CACHE_HOME=/tmp/cache --name slurm_25191 --cpuset-cpus 0-11 --memory 63000m --gpus '"device=0"' -w /mnt/hdd/marina/workspace/2D-to-3D-Pretraining -v /mnt/hdd/marina:/mnt/hdd/marina -p 0.0.0.0:9999:9999 pytorch/pytorch:latest bash -c '{ apt-get update;  DEBIAN_FRONTEND=noninteractive apt-get install -y sudo; python3 -m pip install -r requirements.txt; groupadd --gid 1004 students; useradd --uid 1052 -s /bin/bash --gid 1004 -m -d /mnt/hdd/marina marina; nvidia-smi -L; sudo --set-home --preserve-env=PATH --user=\#1052 -- ./start.sh; }'
+================================================================================
+latest: Pulling from pytorch/pytorch
+Digest: sha256:11691e035a3651d25a87116b4f6adc113a27a29d8f5a6a583f8569e0ee5ff897
+Status: Image is up to date for pytorch/pytorch:latest
+Get:1 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:3 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+Get:6 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+Get:7 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+Get:8 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+Get:9 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [2859 kB]
+Get:10 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1519 kB]
+Get:11 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [3663 kB]
+Get:12 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [53.3 kB]
+Get:13 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [81.4 kB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [33.8 kB]
+Get:15 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [3527 kB]
+Get:16 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [45.2 kB]
+Get:17 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [2560 kB]
+Get:18 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1228 kB]
+Fetched 35.9 MB in 1s (28.1 MB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  sudo
+0 upgraded, 1 newly installed, 0 to remove and 33 not upgraded.
+Need to get 821 kB of archives.
+After this operation, 2568 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 sudo amd64 1.9.9-1ubuntu2.4 [821 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 821 kB in 0s (5298 kB/s)
+Selecting previously unselected package sudo.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6643 files and directories currently installed.)
+Preparing to unpack .../sudo_1.9.9-1ubuntu2.4_amd64.deb ...
+Unpacking sudo (1.9.9-1ubuntu2.4) ...
+Setting up sudo (1.9.9-1ubuntu2.4) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.6) ...
+Collecting jupyterlab (from -r requirements.txt (line 1))
+  Downloading jupyterlab-4.3.4-py3-none-any.whl.metadata (16 kB)
+Requirement already satisfied: numpy>=1.23.5 in /opt/conda/lib/python3.10/site-packages (from -r requirements.txt (line 2)) (1.26.3)
+Collecting matplotlib>=3.5.1 (from -r requirements.txt (line 3))
+  Downloading matplotlib-3.10.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+Collecting scipy>=1.9.3 (from -r requirements.txt (line 4))
+  Downloading scipy-1.15.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.0/62.0 kB 4.1 MB/s eta 0:00:00
+Collecting scikit-image>=0.20 (from scikit-image[data]>=0.20->-r requirements.txt (line 5))
+  Downloading scikit_image-0.25.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (14 kB)
+Requirement already satisfied: Pillow>=2.1.0 in /opt/conda/lib/python3.10/site-packages (from -r requirements.txt (line 6)) (10.2.0)
+Requirement already satisfied: torch>=2.0.1 in /opt/conda/lib/python3.10/site-packages (from -r requirements.txt (line 7)) (2.2.1)
+Requirement already satisfied: torchvision in /opt/conda/lib/python3.10/site-packages (from -r requirements.txt (line 8)) (0.17.1)
+Collecting torchmetrics (from -r requirements.txt (line 9))
+  Downloading torchmetrics-1.6.1-py3-none-any.whl.metadata (21 kB)
+Collecting tensorboard (from -r requirements.txt (line 10))
+  Downloading tensorboard-2.18.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting torchsummary (from -r requirements.txt (line 11))
+  Downloading torchsummary-1.5.1-py3-none-any.whl.metadata (296 bytes)
+Collecting einops>=0.3.0 (from -r requirements.txt (line 12))
+  Downloading einops-0.8.0-py3-none-any.whl.metadata (12 kB)
+Collecting timm (from -r requirements.txt (line 13))
+  Downloading timm-1.0.14-py3-none-any.whl.metadata (50 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.8/50.8 kB 5.5 MB/s eta 0:00:00
+Collecting scikit-learn>=0.18 (from -r requirements.txt (line 14))
+  Downloading scikit_learn-1.6.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (18 kB)
+Collecting pandas>=1.3.5 (from -r requirements.txt (line 15))
+  Downloading pandas-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (89 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 89.9/89.9 kB 8.6 MB/s eta 0:00:00
+Requirement already satisfied: tqdm>=4.62.3 in /opt/conda/lib/python3.10/site-packages (from -r requirements.txt (line 16)) (4.65.0)
+Collecting transformers>=4.36.2 (from -r requirements.txt (line 17))
+  Downloading transformers-4.48.0-py3-none-any.whl.metadata (44 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.4/44.4 kB 5.5 MB/s eta 0:00:00
+Collecting accelerate>=0.26.0 (from -r requirements.txt (line 18))
+  Downloading accelerate-1.3.0-py3-none-any.whl.metadata (19 kB)
+Collecting medmnist (from -r requirements.txt (line 19))
+  Downloading medmnist-3.0.2-py3-none-any.whl.metadata (14 kB)
+Collecting monai (from -r requirements.txt (line 20))
+  Downloading monai-1.4.0-py3-none-any.whl.metadata (11 kB)
+Collecting fire (from -r requirements.txt (line 21))
+  Downloading fire-0.7.0.tar.gz (87 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.2/87.2 kB 12.2 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting acsconv (from -r requirements.txt (line 24))
+  Downloading ACSConv-0.1.1.tar.gz (15 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting kaggle (from -r requirements.txt (line 25))
+  Downloading kaggle-1.6.17.tar.gz (82 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 82.7/82.7 kB 10.8 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting evaluate (from -r requirements.txt (line 26))
+  Downloading evaluate-0.4.3-py3-none-any.whl.metadata (9.2 kB)
+Collecting async-lru>=1.0.0 (from jupyterlab->-r requirements.txt (line 1))
+  Downloading async_lru-2.0.4-py3-none-any.whl.metadata (4.5 kB)
+Collecting httpx>=0.25.0 (from jupyterlab->-r requirements.txt (line 1))
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting ipykernel>=6.5.0 (from jupyterlab->-r requirements.txt (line 1))
+  Downloading ipykernel-6.29.5-py3-none-any.whl.metadata (6.3 kB)
+Requirement already satisfied: jinja2>=3.0.3 in /opt/conda/lib/python3.10/site-packages (from jupyterlab->-r requirements.txt (line 1)) (3.1.3)
+Collecting jupyter-core (from jupyterlab->-r requirements.txt (line 1))
+  Downloading jupyter_core-5.7.2-py3-none-any.whl.metadata (3.4 kB)
+Collecting jupyter-lsp>=2.0.0 (from jupyterlab->-r requirements.txt (line 1))
+  Downloading jupyter_lsp-2.2.5-py3-none-any.whl.metadata (1.8 kB)
+Collecting jupyter-server<3,>=2.4.0 (from jupyterlab->-r requirements.txt (line 1))
+  Downloading jupyter_server-2.15.0-py3-none-any.whl.metadata (8.4 kB)
+Collecting jupyterlab-server<3,>=2.27.1 (from jupyterlab->-r requirements.txt (line 1))
+  Downloading jupyterlab_server-2.27.3-py3-none-any.whl.metadata (5.9 kB)
+Collecting notebook-shim>=0.2 (from jupyterlab->-r requirements.txt (line 1))
+  Downloading notebook_shim-0.2.4-py3-none-any.whl.metadata (4.0 kB)
+Requirement already satisfied: packaging in /opt/conda/lib/python3.10/site-packages (from jupyterlab->-r requirements.txt (line 1)) (23.1)
+Requirement already satisfied: setuptools>=40.8.0 in /opt/conda/lib/python3.10/site-packages (from jupyterlab->-r requirements.txt (line 1)) (68.2.2)
+Requirement already satisfied: tomli>=1.2.2 in /opt/conda/lib/python3.10/site-packages (from jupyterlab->-r requirements.txt (line 1)) (2.0.1)
+Collecting tornado>=6.2.0 (from jupyterlab->-r requirements.txt (line 1))
+  Downloading tornado-6.4.2-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.5 kB)
+Requirement already satisfied: traitlets in /opt/conda/lib/python3.10/site-packages (from jupyterlab->-r requirements.txt (line 1)) (5.7.1)
+Collecting contourpy>=1.0.1 (from matplotlib>=3.5.1->-r requirements.txt (line 3))
+  Downloading contourpy-1.3.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.4 kB)
+Collecting cycler>=0.10 (from matplotlib>=3.5.1->-r requirements.txt (line 3))
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib>=3.5.1->-r requirements.txt (line 3))
+  Downloading fonttools-4.55.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (165 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 165.1/165.1 kB 21.2 MB/s eta 0:00:00
+Collecting kiwisolver>=1.3.1 (from matplotlib>=3.5.1->-r requirements.txt (line 3))
+  Downloading kiwisolver-1.4.8-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (6.2 kB)
+Collecting pyparsing>=2.3.1 (from matplotlib>=3.5.1->-r requirements.txt (line 3))
+  Downloading pyparsing-3.2.1-py3-none-any.whl.metadata (5.0 kB)
+Collecting python-dateutil>=2.7 (from matplotlib>=3.5.1->-r requirements.txt (line 3))
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Requirement already satisfied: networkx>=3.0 in /opt/conda/lib/python3.10/site-packages (from scikit-image>=0.20->scikit-image[data]>=0.20->-r requirements.txt (line 5)) (3.1)
+Collecting imageio!=2.35.0,>=2.33 (from scikit-image>=0.20->scikit-image[data]>=0.20->-r requirements.txt (line 5))
+  Downloading imageio-2.36.1-py3-none-any.whl.metadata (5.2 kB)
+Collecting tifffile>=2022.8.12 (from scikit-image>=0.20->scikit-image[data]>=0.20->-r requirements.txt (line 5))
+  Downloading tifffile-2025.1.10-py3-none-any.whl.metadata (31 kB)
+Collecting lazy-loader>=0.4 (from scikit-image>=0.20->scikit-image[data]>=0.20->-r requirements.txt (line 5))
+  Downloading lazy_loader-0.4-py3-none-any.whl.metadata (7.6 kB)
+Requirement already satisfied: filelock in /opt/conda/lib/python3.10/site-packages (from torch>=2.0.1->-r requirements.txt (line 7)) (3.13.1)
+Requirement already satisfied: typing-extensions>=4.8.0 in /opt/conda/lib/python3.10/site-packages (from torch>=2.0.1->-r requirements.txt (line 7)) (4.9.0)
+Requirement already satisfied: sympy in /opt/conda/lib/python3.10/site-packages (from torch>=2.0.1->-r requirements.txt (line 7)) (1.12)
+Requirement already satisfied: fsspec in /opt/conda/lib/python3.10/site-packages (from torch>=2.0.1->-r requirements.txt (line 7)) (2024.2.0)
+Collecting lightning-utilities>=0.8.0 (from torchmetrics->-r requirements.txt (line 9))
+  Downloading lightning_utilities-0.11.9-py3-none-any.whl.metadata (5.2 kB)
+Collecting absl-py>=0.4 (from tensorboard->-r requirements.txt (line 10))
+  Downloading absl_py-2.1.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting grpcio>=1.48.2 (from tensorboard->-r requirements.txt (line 10))
+  Downloading grpcio-1.69.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.9 kB)
+Collecting markdown>=2.6.8 (from tensorboard->-r requirements.txt (line 10))
+  Downloading Markdown-3.7-py3-none-any.whl.metadata (7.0 kB)
+Collecting protobuf!=4.24.0,>=3.19.6 (from tensorboard->-r requirements.txt (line 10))
+  Downloading protobuf-5.29.3-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+Requirement already satisfied: six>1.9 in /opt/conda/lib/python3.10/site-packages (from tensorboard->-r requirements.txt (line 10)) (1.16.0)
+Collecting tensorboard-data-server<0.8.0,>=0.7.0 (from tensorboard->-r requirements.txt (line 10))
+  Downloading tensorboard_data_server-0.7.2-py3-none-manylinux_2_31_x86_64.whl.metadata (1.1 kB)
+Collecting werkzeug>=1.0.1 (from tensorboard->-r requirements.txt (line 10))
+  Downloading werkzeug-3.1.3-py3-none-any.whl.metadata (3.7 kB)
+Requirement already satisfied: pyyaml in /opt/conda/lib/python3.10/site-packages (from timm->-r requirements.txt (line 13)) (6.0.1)
+Collecting huggingface_hub (from timm->-r requirements.txt (line 13))
+  Downloading huggingface_hub-0.27.1-py3-none-any.whl.metadata (13 kB)
+Collecting safetensors (from timm->-r requirements.txt (line 13))
+  Downloading safetensors-0.5.2-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.8 kB)
+Collecting joblib>=1.2.0 (from scikit-learn>=0.18->-r requirements.txt (line 14))
+  Downloading joblib-1.4.2-py3-none-any.whl.metadata (5.4 kB)
+Collecting threadpoolctl>=3.1.0 (from scikit-learn>=0.18->-r requirements.txt (line 14))
+  Downloading threadpoolctl-3.5.0-py3-none-any.whl.metadata (13 kB)
+Requirement already satisfied: pytz>=2020.1 in /opt/conda/lib/python3.10/site-packages (from pandas>=1.3.5->-r requirements.txt (line 15)) (2023.3.post1)
+Collecting tzdata>=2022.7 (from pandas>=1.3.5->-r requirements.txt (line 15))
+  Downloading tzdata-2024.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting regex!=2019.12.17 (from transformers>=4.36.2->-r requirements.txt (line 17))
+  Downloading regex-2024.11.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (40 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.5/40.5 kB 4.4 MB/s eta 0:00:00
+Requirement already satisfied: requests in /opt/conda/lib/python3.10/site-packages (from transformers>=4.36.2->-r requirements.txt (line 17)) (2.31.0)
+Collecting tokenizers<0.22,>=0.21 (from transformers>=4.36.2->-r requirements.txt (line 17))
+  Downloading tokenizers-0.21.0-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+Requirement already satisfied: psutil in /opt/conda/lib/python3.10/site-packages (from accelerate>=0.26.0->-r requirements.txt (line 18)) (5.9.0)
+Collecting termcolor (from fire->-r requirements.txt (line 21))
+  Downloading termcolor-2.5.0-py3-none-any.whl.metadata (6.1 kB)
+Collecting tensorboardx (from acsconv->-r requirements.txt (line 24))
+  Downloading tensorboardX-2.6.2.2-py2.py3-none-any.whl.metadata (5.8 kB)
+Requirement already satisfied: certifi>=2023.7.22 in /opt/conda/lib/python3.10/site-packages (from kaggle->-r requirements.txt (line 25)) (2024.2.2)
+Collecting python-slugify (from kaggle->-r requirements.txt (line 25))
+  Downloading python_slugify-8.0.4-py2.py3-none-any.whl.metadata (8.5 kB)
+Requirement already satisfied: urllib3 in /opt/conda/lib/python3.10/site-packages (from kaggle->-r requirements.txt (line 25)) (2.1.0)
+Collecting bleach (from kaggle->-r requirements.txt (line 25))
+  Downloading bleach-6.2.0-py3-none-any.whl.metadata (30 kB)
+Collecting datasets>=2.0.0 (from evaluate->-r requirements.txt (line 26))
+  Downloading datasets-3.2.0-py3-none-any.whl.metadata (20 kB)
+Collecting dill (from evaluate->-r requirements.txt (line 26))
+  Downloading dill-0.3.9-py3-none-any.whl.metadata (10 kB)
+Collecting xxhash (from evaluate->-r requirements.txt (line 26))
+  Downloading xxhash-3.5.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (12 kB)
+Collecting multiprocess (from evaluate->-r requirements.txt (line 26))
+  Downloading multiprocess-0.70.17-py310-none-any.whl.metadata (7.2 kB)
+Collecting pooch>=1.6.0 (from scikit-image[data]>=0.20->-r requirements.txt (line 5))
+  Downloading pooch-1.8.2-py3-none-any.whl.metadata (10 kB)
+Collecting pyarrow>=15.0.0 (from datasets>=2.0.0->evaluate->-r requirements.txt (line 26))
+  Downloading pyarrow-19.0.0-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (3.3 kB)
+Collecting dill (from evaluate->-r requirements.txt (line 26))
+  Downloading dill-0.3.8-py3-none-any.whl.metadata (10 kB)
+Collecting requests (from transformers>=4.36.2->-r requirements.txt (line 17))
+  Downloading requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting tqdm>=4.62.3 (from -r requirements.txt (line 16))
+  Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.7/57.7 kB 7.6 MB/s eta 0:00:00
+Collecting multiprocess (from evaluate->-r requirements.txt (line 26))
+  Downloading multiprocess-0.70.16-py310-none-any.whl.metadata (7.2 kB)
+Collecting aiohttp (from datasets>=2.0.0->evaluate->-r requirements.txt (line 26))
+  Downloading aiohttp-3.11.11-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+Collecting anyio (from httpx>=0.25.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading anyio-4.8.0-py3-none-any.whl.metadata (4.6 kB)
+Collecting httpcore==1.* (from httpx>=0.25.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading httpcore-1.0.7-py3-none-any.whl.metadata (21 kB)
+Requirement already satisfied: idna in /opt/conda/lib/python3.10/site-packages (from httpx>=0.25.0->jupyterlab->-r requirements.txt (line 1)) (3.4)
+Collecting h11<0.15,>=0.13 (from httpcore==1.*->httpx>=0.25.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading h11-0.14.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting comm>=0.1.1 (from ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading comm-0.2.2-py3-none-any.whl.metadata (3.7 kB)
+Collecting debugpy>=1.6.5 (from ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading debugpy-1.8.12-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.3 kB)
+Requirement already satisfied: ipython>=7.23.1 in /opt/conda/lib/python3.10/site-packages (from ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (8.20.0)
+Collecting jupyter-client>=6.1.12 (from ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading jupyter_client-8.6.3-py3-none-any.whl.metadata (8.3 kB)
+Requirement already satisfied: matplotlib-inline>=0.1 in /opt/conda/lib/python3.10/site-packages (from ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (0.1.6)
+Collecting nest-asyncio (from ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading nest_asyncio-1.6.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting pyzmq>=24 (from ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading pyzmq-26.2.0-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (6.2 kB)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/conda/lib/python3.10/site-packages (from jinja2>=3.0.3->jupyterlab->-r requirements.txt (line 1)) (2.1.3)
+Requirement already satisfied: platformdirs>=2.5 in /opt/conda/lib/python3.10/site-packages (from jupyter-core->jupyterlab->-r requirements.txt (line 1)) (3.10.0)
+Collecting argon2-cffi>=21.1 (from jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading argon2_cffi-23.1.0-py3-none-any.whl.metadata (5.2 kB)
+Collecting jupyter-events>=0.11.0 (from jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading jupyter_events-0.11.0-py3-none-any.whl.metadata (5.8 kB)
+Collecting jupyter-server-terminals>=0.4.4 (from jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading jupyter_server_terminals-0.5.3-py3-none-any.whl.metadata (5.6 kB)
+Collecting nbconvert>=6.4.4 (from jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading nbconvert-7.16.5-py3-none-any.whl.metadata (8.5 kB)
+Collecting nbformat>=5.3.0 (from jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading nbformat-5.10.4-py3-none-any.whl.metadata (3.6 kB)
+Collecting overrides>=5.0 (from jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading overrides-7.7.0-py3-none-any.whl.metadata (5.8 kB)
+Collecting prometheus-client>=0.9 (from jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading prometheus_client-0.21.1-py3-none-any.whl.metadata (1.8 kB)
+Collecting send2trash>=1.8.2 (from jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading Send2Trash-1.8.3-py3-none-any.whl.metadata (4.0 kB)
+Collecting terminado>=0.8.3 (from jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading terminado-0.18.1-py3-none-any.whl.metadata (5.8 kB)
+Collecting websocket-client>=1.7 (from jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading websocket_client-1.8.0-py3-none-any.whl.metadata (8.0 kB)
+Collecting babel>=2.10 (from jupyterlab-server<3,>=2.27.1->jupyterlab->-r requirements.txt (line 1))
+  Downloading babel-2.16.0-py3-none-any.whl.metadata (1.5 kB)
+Collecting json5>=0.9.0 (from jupyterlab-server<3,>=2.27.1->jupyterlab->-r requirements.txt (line 1))
+  Downloading json5-0.10.0-py3-none-any.whl.metadata (34 kB)
+Requirement already satisfied: jsonschema>=4.18.0 in /opt/conda/lib/python3.10/site-packages (from jupyterlab-server<3,>=2.27.1->jupyterlab->-r requirements.txt (line 1)) (4.19.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in /opt/conda/lib/python3.10/site-packages (from requests->transformers>=4.36.2->-r requirements.txt (line 17)) (2.0.4)
+Collecting webencodings (from bleach->kaggle->-r requirements.txt (line 25))
+  Downloading webencodings-0.5.1-py2.py3-none-any.whl.metadata (2.1 kB)
+Collecting text-unidecode>=1.3 (from python-slugify->kaggle->-r requirements.txt (line 25))
+  Downloading text_unidecode-1.3-py2.py3-none-any.whl.metadata (2.4 kB)
+Requirement already satisfied: mpmath>=0.19 in /opt/conda/lib/python3.10/site-packages (from sympy->torch>=2.0.1->-r requirements.txt (line 7)) (1.3.0)
+Collecting aiohappyeyeballs>=2.3.0 (from aiohttp->datasets>=2.0.0->evaluate->-r requirements.txt (line 26))
+  Downloading aiohappyeyeballs-2.4.4-py3-none-any.whl.metadata (6.1 kB)
+Collecting aiosignal>=1.1.2 (from aiohttp->datasets>=2.0.0->evaluate->-r requirements.txt (line 26))
+  Downloading aiosignal-1.3.2-py2.py3-none-any.whl.metadata (3.8 kB)
+Collecting async-timeout<6.0,>=4.0 (from aiohttp->datasets>=2.0.0->evaluate->-r requirements.txt (line 26))
+  Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+Requirement already satisfied: attrs>=17.3.0 in /opt/conda/lib/python3.10/site-packages (from aiohttp->datasets>=2.0.0->evaluate->-r requirements.txt (line 26)) (23.1.0)
+Collecting frozenlist>=1.1.1 (from aiohttp->datasets>=2.0.0->evaluate->-r requirements.txt (line 26))
+  Downloading frozenlist-1.5.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (13 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp->datasets>=2.0.0->evaluate->-r requirements.txt (line 26))
+  Downloading multidict-6.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.0 kB)
+Collecting propcache>=0.2.0 (from aiohttp->datasets>=2.0.0->evaluate->-r requirements.txt (line 26))
+  Downloading propcache-0.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.2 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp->datasets>=2.0.0->evaluate->-r requirements.txt (line 26))
+  Downloading yarl-1.18.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (69 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.2/69.2 kB 8.5 MB/s eta 0:00:00
+Requirement already satisfied: exceptiongroup>=1.0.2 in /opt/conda/lib/python3.10/site-packages (from anyio->httpx>=0.25.0->jupyterlab->-r requirements.txt (line 1)) (1.2.0)
+Collecting sniffio>=1.1 (from anyio->httpx>=0.25.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting argon2-cffi-bindings (from argon2-cffi>=21.1->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading argon2_cffi_bindings-21.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+Requirement already satisfied: decorator in /opt/conda/lib/python3.10/site-packages (from ipython>=7.23.1->ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (5.1.1)
+Requirement already satisfied: jedi>=0.16 in /opt/conda/lib/python3.10/site-packages (from ipython>=7.23.1->ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (0.18.1)
+Requirement already satisfied: prompt-toolkit<3.1.0,>=3.0.41 in /opt/conda/lib/python3.10/site-packages (from ipython>=7.23.1->ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (3.0.43)
+Requirement already satisfied: pygments>=2.4.0 in /opt/conda/lib/python3.10/site-packages (from ipython>=7.23.1->ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (2.15.1)
+Requirement already satisfied: stack-data in /opt/conda/lib/python3.10/site-packages (from ipython>=7.23.1->ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (0.2.0)
+Requirement already satisfied: pexpect>4.3 in /opt/conda/lib/python3.10/site-packages (from ipython>=7.23.1->ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (4.8.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /opt/conda/lib/python3.10/site-packages (from jsonschema>=4.18.0->jupyterlab-server<3,>=2.27.1->jupyterlab->-r requirements.txt (line 1)) (2023.7.1)
+Requirement already satisfied: referencing>=0.28.4 in /opt/conda/lib/python3.10/site-packages (from jsonschema>=4.18.0->jupyterlab-server<3,>=2.27.1->jupyterlab->-r requirements.txt (line 1)) (0.30.2)
+Requirement already satisfied: rpds-py>=0.7.1 in /opt/conda/lib/python3.10/site-packages (from jsonschema>=4.18.0->jupyterlab-server<3,>=2.27.1->jupyterlab->-r requirements.txt (line 1)) (0.10.6)
+Collecting python-json-logger>=2.0.4 (from jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading python_json_logger-3.2.1-py3-none-any.whl.metadata (4.1 kB)
+Collecting rfc3339-validator (from jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl.metadata (1.5 kB)
+Collecting rfc3986-validator>=0.1.1 (from jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading rfc3986_validator-0.1.1-py2.py3-none-any.whl.metadata (1.7 kB)
+Requirement already satisfied: beautifulsoup4 in /opt/conda/lib/python3.10/site-packages (from nbconvert>=6.4.4->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1)) (4.12.2)
+Collecting defusedxml (from nbconvert>=6.4.4->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+Collecting jupyterlab-pygments (from nbconvert>=6.4.4->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading jupyterlab_pygments-0.3.0-py3-none-any.whl.metadata (4.4 kB)
+Collecting mistune<4,>=2.0.3 (from nbconvert>=6.4.4->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading mistune-3.1.0-py3-none-any.whl.metadata (1.7 kB)
+Collecting nbclient>=0.5.0 (from nbconvert>=6.4.4->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading nbclient-0.10.2-py3-none-any.whl.metadata (8.3 kB)
+Collecting pandocfilters>=1.4.1 (from nbconvert>=6.4.4->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading pandocfilters-1.5.1-py2.py3-none-any.whl.metadata (9.0 kB)
+Collecting fastjsonschema>=2.15 (from nbformat>=5.3.0->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading fastjsonschema-2.21.1-py3-none-any.whl.metadata (2.2 kB)
+Requirement already satisfied: ptyprocess in /opt/conda/lib/python3.10/site-packages (from terminado>=0.8.3->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1)) (0.7.0)
+Collecting tinycss2<1.5,>=1.1.0 (from bleach[css]!=5.0.0->nbconvert>=6.4.4->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading tinycss2-1.4.0-py3-none-any.whl.metadata (3.0 kB)
+Requirement already satisfied: parso<0.9.0,>=0.8.0 in /opt/conda/lib/python3.10/site-packages (from jedi>=0.16->ipython>=7.23.1->ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (0.8.3)
+Collecting fqdn (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading fqdn-1.5.1-py3-none-any.whl.metadata (1.4 kB)
+Collecting isoduration (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading isoduration-20.11.0-py3-none-any.whl.metadata (5.7 kB)
+Requirement already satisfied: jsonpointer>1.13 in /opt/conda/lib/python3.10/site-packages (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1)) (2.1)
+Collecting uri-template (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading uri_template-1.3.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting webcolors>=1.11 (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading webcolors-24.11.1-py3-none-any.whl.metadata (2.2 kB)
+Requirement already satisfied: wcwidth in /opt/conda/lib/python3.10/site-packages (from prompt-toolkit<3.1.0,>=3.0.41->ipython>=7.23.1->ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (0.2.5)
+Requirement already satisfied: cffi>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from argon2-cffi-bindings->argon2-cffi>=21.1->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1)) (1.16.0)
+Requirement already satisfied: soupsieve>1.2 in /opt/conda/lib/python3.10/site-packages (from beautifulsoup4->nbconvert>=6.4.4->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1)) (2.5)
+Requirement already satisfied: executing in /opt/conda/lib/python3.10/site-packages (from stack-data->ipython>=7.23.1->ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (0.8.3)
+Requirement already satisfied: asttokens in /opt/conda/lib/python3.10/site-packages (from stack-data->ipython>=7.23.1->ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (2.0.5)
+Requirement already satisfied: pure-eval in /opt/conda/lib/python3.10/site-packages (from stack-data->ipython>=7.23.1->ipykernel>=6.5.0->jupyterlab->-r requirements.txt (line 1)) (0.2.2)
+Requirement already satisfied: pycparser in /opt/conda/lib/python3.10/site-packages (from cffi>=1.0.1->argon2-cffi-bindings->argon2-cffi>=21.1->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1)) (2.21)
+Collecting arrow>=0.15.0 (from isoduration->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading arrow-1.3.0-py3-none-any.whl.metadata (7.5 kB)
+Collecting types-python-dateutil>=2.8.10 (from arrow>=0.15.0->isoduration->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->-r requirements.txt (line 1))
+  Downloading types_python_dateutil-2.9.0.20241206-py3-none-any.whl.metadata (2.1 kB)
+Downloading jupyterlab-4.3.4-py3-none-any.whl (11.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.7/11.7 MB 99.1 MB/s eta 0:00:00
+Downloading matplotlib-3.10.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (8.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.6/8.6 MB 101.0 MB/s eta 0:00:00
+Downloading scipy-1.15.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (40.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.6/40.6 MB 78.7 MB/s eta 0:00:00
+Downloading scikit_image-0.25.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (14.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.8/14.8 MB 95.2 MB/s eta 0:00:00
+Downloading torchmetrics-1.6.1-py3-none-any.whl (927 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 927.3/927.3 kB 65.1 MB/s eta 0:00:00
+Downloading tensorboard-2.18.0-py3-none-any.whl (5.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 94.3 MB/s eta 0:00:00
+Downloading torchsummary-1.5.1-py3-none-any.whl (2.8 kB)
+Downloading einops-0.8.0-py3-none-any.whl (43 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.2/43.2 kB 5.2 MB/s eta 0:00:00
+Downloading timm-1.0.14-py3-none-any.whl (2.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.4/2.4 MB 84.4 MB/s eta 0:00:00
+Downloading scikit_learn-1.6.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.5/13.5 MB 91.1 MB/s eta 0:00:00
+Downloading pandas-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.1/13.1 MB 90.5 MB/s eta 0:00:00
+Downloading transformers-4.48.0-py3-none-any.whl (9.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.7/9.7 MB 99.1 MB/s eta 0:00:00
+Downloading accelerate-1.3.0-py3-none-any.whl (336 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 336.6/336.6 kB 37.8 MB/s eta 0:00:00
+Downloading medmnist-3.0.2-py3-none-any.whl (25 kB)
+Downloading monai-1.4.0-py3-none-any.whl (1.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 75.4 MB/s eta 0:00:00
+Downloading evaluate-0.4.3-py3-none-any.whl (84 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 84.0/84.0 kB 11.4 MB/s eta 0:00:00
+Downloading absl_py-2.1.0-py3-none-any.whl (133 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.7/133.7 kB 17.5 MB/s eta 0:00:00
+Downloading async_lru-2.0.4-py3-none-any.whl (6.1 kB)
+Downloading contourpy-1.3.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (324 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 325.0/325.0 kB 37.3 MB/s eta 0:00:00
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading datasets-3.2.0-py3-none-any.whl (480 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 480.6/480.6 kB 45.3 MB/s eta 0:00:00
+Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.5/78.5 kB 10.5 MB/s eta 0:00:00
+Downloading dill-0.3.8-py3-none-any.whl (116 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 116.3/116.3 kB 15.6 MB/s eta 0:00:00
+Downloading fonttools-4.55.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.6/4.6 MB 93.2 MB/s eta 0:00:00
+Downloading grpcio-1.69.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.0/6.0 MB 94.5 MB/s eta 0:00:00
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.5/73.5 kB 10.0 MB/s eta 0:00:00
+Downloading httpcore-1.0.7-py3-none-any.whl (78 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.6/78.6 kB 10.6 MB/s eta 0:00:00
+Downloading huggingface_hub-0.27.1-py3-none-any.whl (450 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 450.7/450.7 kB 45.7 MB/s eta 0:00:00
+Downloading imageio-2.36.1-py3-none-any.whl (315 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 315.4/315.4 kB 35.4 MB/s eta 0:00:00
+Downloading ipykernel-6.29.5-py3-none-any.whl (117 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.2/117.2 kB 16.6 MB/s eta 0:00:00
+Downloading joblib-1.4.2-py3-none-any.whl (301 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 301.8/301.8 kB 33.3 MB/s eta 0:00:00
+Downloading jupyter_core-5.7.2-py3-none-any.whl (28 kB)
+Downloading jupyter_lsp-2.2.5-py3-none-any.whl (69 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.1/69.1 kB 8.7 MB/s eta 0:00:00
+Downloading jupyter_server-2.15.0-py3-none-any.whl (385 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 385.8/385.8 kB 39.1 MB/s eta 0:00:00
+Downloading jupyterlab_server-2.27.3-py3-none-any.whl (59 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.7/59.7 kB 7.6 MB/s eta 0:00:00
+Downloading kiwisolver-1.4.8-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 69.8 MB/s eta 0:00:00
+Downloading lazy_loader-0.4-py3-none-any.whl (12 kB)
+Downloading lightning_utilities-0.11.9-py3-none-any.whl (28 kB)
+Downloading Markdown-3.7-py3-none-any.whl (106 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 106.3/106.3 kB 14.8 MB/s eta 0:00:00
+Downloading multiprocess-0.70.16-py310-none-any.whl (134 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.8/134.8 kB 17.5 MB/s eta 0:00:00
+Downloading notebook_shim-0.2.4-py3-none-any.whl (13 kB)
+Downloading pooch-1.8.2-py3-none-any.whl (64 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.6/64.6 kB 8.9 MB/s eta 0:00:00
+Downloading protobuf-5.29.3-cp38-abi3-manylinux2014_x86_64.whl (319 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 319.7/319.7 kB 25.3 MB/s eta 0:00:00
+Downloading pyparsing-3.2.1-py3-none-any.whl (107 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 107.7/107.7 kB 14.6 MB/s eta 0:00:00
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 229.9/229.9 kB 27.1 MB/s eta 0:00:00
+Downloading regex-2024.11.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (781 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 781.7/781.7 kB 59.0 MB/s eta 0:00:00
+Downloading requests-2.32.3-py3-none-any.whl (64 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.9/64.9 kB 8.2 MB/s eta 0:00:00
+Downloading safetensors-0.5.2-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (461 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 462.0/462.0 kB 33.2 MB/s eta 0:00:00
+Downloading tensorboard_data_server-0.7.2-py3-none-manylinux_2_31_x86_64.whl (6.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 90.5 MB/s eta 0:00:00
+Downloading threadpoolctl-3.5.0-py3-none-any.whl (18 kB)
+Downloading tifffile-2025.1.10-py3-none-any.whl (227 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 227.6/227.6 kB 27.1 MB/s eta 0:00:00
+Downloading tokenizers-0.21.0-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 88.0 MB/s eta 0:00:00
+Downloading tornado-6.4.2-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (437 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 437.2/437.2 kB 44.4 MB/s eta 0:00:00
+Downloading tzdata-2024.2-py2.py3-none-any.whl (346 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 346.6/346.6 kB 32.7 MB/s eta 0:00:00
+Downloading werkzeug-3.1.3-py3-none-any.whl (224 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 224.5/224.5 kB 24.8 MB/s eta 0:00:00
+Downloading bleach-6.2.0-py3-none-any.whl (163 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 163.4/163.4 kB 19.6 MB/s eta 0:00:00
+Downloading python_slugify-8.0.4-py2.py3-none-any.whl (10 kB)
+Downloading tensorboardX-2.6.2.2-py2.py3-none-any.whl (101 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 101.7/101.7 kB 12.9 MB/s eta 0:00:00
+Downloading termcolor-2.5.0-py3-none-any.whl (7.8 kB)
+Downloading xxhash-3.5.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (194 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 194.1/194.1 kB 24.4 MB/s eta 0:00:00
+Downloading aiohttp-3.11.11-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 73.9 MB/s eta 0:00:00
+Downloading anyio-4.8.0-py3-none-any.whl (96 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.0/96.0 kB 12.2 MB/s eta 0:00:00
+Downloading argon2_cffi-23.1.0-py3-none-any.whl (15 kB)
+Downloading babel-2.16.0-py3-none-any.whl (9.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.6/9.6 MB 97.6 MB/s eta 0:00:00
+Downloading comm-0.2.2-py3-none-any.whl (7.2 kB)
+Downloading debugpy-1.8.12-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.6/3.6 MB 90.5 MB/s eta 0:00:00
+Downloading json5-0.10.0-py3-none-any.whl (34 kB)
+Downloading jupyter_client-8.6.3-py3-none-any.whl (106 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 106.1/106.1 kB 14.5 MB/s eta 0:00:00
+Downloading jupyter_events-0.11.0-py3-none-any.whl (19 kB)
+Downloading jupyter_server_terminals-0.5.3-py3-none-any.whl (13 kB)
+Downloading nbconvert-7.16.5-py3-none-any.whl (258 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 258.1/258.1 kB 30.0 MB/s eta 0:00:00
+Downloading nbformat-5.10.4-py3-none-any.whl (78 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.5/78.5 kB 10.7 MB/s eta 0:00:00
+Downloading overrides-7.7.0-py3-none-any.whl (17 kB)
+Downloading prometheus_client-0.21.1-py3-none-any.whl (54 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 54.7/54.7 kB 7.0 MB/s eta 0:00:00
+Downloading pyarrow-19.0.0-cp310-cp310-manylinux_2_28_x86_64.whl (42.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.1/42.1 MB 78.1 MB/s eta 0:00:00
+Downloading pyzmq-26.2.0-cp310-cp310-manylinux_2_28_x86_64.whl (868 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 868.8/868.8 kB 60.3 MB/s eta 0:00:00
+Downloading Send2Trash-1.8.3-py3-none-any.whl (18 kB)
+Downloading terminado-0.18.1-py3-none-any.whl (14 kB)
+Downloading text_unidecode-1.3-py2.py3-none-any.whl (78 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.2/78.2 kB 10.6 MB/s eta 0:00:00
+Downloading websocket_client-1.8.0-py3-none-any.whl (58 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.8/58.8 kB 7.3 MB/s eta 0:00:00
+Downloading nest_asyncio-1.6.0-py3-none-any.whl (5.2 kB)
+Downloading webencodings-0.5.1-py2.py3-none-any.whl (11 kB)
+Downloading aiohappyeyeballs-2.4.4-py3-none-any.whl (14 kB)
+Downloading aiosignal-1.3.2-py2.py3-none-any.whl (7.6 kB)
+Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+Downloading fastjsonschema-2.21.1-py3-none-any.whl (23 kB)
+Downloading frozenlist-1.5.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (241 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 241.9/241.9 kB 26.9 MB/s eta 0:00:00
+Downloading h11-0.14.0-py3-none-any.whl (58 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.3/58.3 kB 7.8 MB/s eta 0:00:00
+Downloading mistune-3.1.0-py3-none-any.whl (53 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 53.7/53.7 kB 6.9 MB/s eta 0:00:00
+Downloading multidict-6.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (124 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 124.6/124.6 kB 17.4 MB/s eta 0:00:00
+Downloading nbclient-0.10.2-py3-none-any.whl (25 kB)
+Downloading pandocfilters-1.5.1-py2.py3-none-any.whl (8.7 kB)
+Downloading propcache-0.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (205 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 205.1/205.1 kB 24.4 MB/s eta 0:00:00
+Downloading python_json_logger-3.2.1-py3-none-any.whl (14 kB)
+Downloading rfc3986_validator-0.1.1-py2.py3-none-any.whl (4.2 kB)
+Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+Downloading yarl-1.18.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (319 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 319.7/319.7 kB 20.3 MB/s eta 0:00:00
+Downloading argon2_cffi_bindings-21.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (86 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.2/86.2 kB 11.6 MB/s eta 0:00:00
+Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Downloading jupyterlab_pygments-0.3.0-py3-none-any.whl (15 kB)
+Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl (3.5 kB)
+Downloading tinycss2-1.4.0-py3-none-any.whl (26 kB)
+Downloading webcolors-24.11.1-py3-none-any.whl (14 kB)
+Downloading fqdn-1.5.1-py3-none-any.whl (9.1 kB)
+Downloading isoduration-20.11.0-py3-none-any.whl (11 kB)
+Downloading uri_template-1.3.0-py3-none-any.whl (11 kB)
+Downloading arrow-1.3.0-py3-none-any.whl (66 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.4/66.4 kB 7.6 MB/s eta 0:00:00
+Downloading types_python_dateutil-2.9.0.20241206-py3-none-any.whl (14 kB)
+Building wheels for collected packages: fire, acsconv, kaggle
+  Building wheel for fire (setup.py): started
+  Building wheel for fire (setup.py): finished with status 'done'
+  Created wheel for fire: filename=fire-0.7.0-py3-none-any.whl size=114247 sha256=944bbd8d2545d01e671caa7b5e1120e2b2ac1c37c0d9968191a0807ec8b4ace4
+  Stored in directory: /tmp/cache/pip/wheels/19/39/2f/2d3cadc408a8804103f1c34ddd4b9f6a93497b11fa96fe738e
+  Building wheel for acsconv (setup.py): started
+  Building wheel for acsconv (setup.py): finished with status 'done'
+  Created wheel for acsconv: filename=ACSConv-0.1.1-py3-none-any.whl size=24182 sha256=b8ea0d2578343bf9b88f6545e208365c01214472ea37f3d135f96725f1de99d5
+  Stored in directory: /tmp/cache/pip/wheels/0e/b1/ef/43fe6db442ef60fc6a8c7f98f330672eeca58463ebef542e62
+  Building wheel for kaggle (setup.py): started
+  Building wheel for kaggle (setup.py): finished with status 'done'
+  Created wheel for kaggle: filename=kaggle-1.6.17-py3-none-any.whl size=105786 sha256=5be3375013fb5ba2483208693f6127b73d312ad6c5feb6bc2ef5f5b4fc98e32e
+  Stored in directory: /tmp/cache/pip/wheels/9f/af/22/bf406f913dc7506a485e60dce8143741abd0a92a19337d83a3
+Successfully built fire acsconv kaggle
+Installing collected packages: webencodings, torchsummary, text-unidecode, fastjsonschema, xxhash, werkzeug, websocket-client, webcolors, uri-template, tzdata, types-python-dateutil, tqdm, tornado, tinycss2, tifffile, threadpoolctl, termcolor, tensorboard-data-server, sniffio, send2trash, scipy, safetensors, rfc3986-validator, rfc3339-validator, requests, regex, pyzmq, python-slugify, python-json-logger, python-dateutil, pyparsing, pyarrow, protobuf, propcache, prometheus-client, pandocfilters, overrides, nest-asyncio, multidict, mistune, markdown, lightning-utilities, lazy-loader, kiwisolver, jupyterlab-pygments, jupyter-core, json5, joblib, imageio, h11, grpcio, frozenlist, fqdn, fonttools, einops, dill, defusedxml, debugpy, cycler, contourpy, comm, bleach, babel, async-timeout, async-lru, aiohappyeyeballs, absl-py, yarl, terminado, tensorboardx, tensorboard, scikit-learn, scikit-image, pooch, pandas, multiprocess, matplotlib, kaggle, jupyter-client, huggingface_hub, httpcore, fire, arrow, argon2-cffi-bindings, anyio, aiosignal, torchmetrics, tokenizers, monai, jupyter-server-terminals, isoduration, httpx, argon2-cffi, aiohttp, accelerate, transformers, timm, nbformat, medmnist, ipykernel, acsconv, nbclient, jupyter-events, datasets, nbconvert, evaluate, jupyter-server, notebook-shim, jupyterlab-server, jupyter-lsp, jupyterlab
+  Attempting uninstall: tqdm
+    Found existing installation: tqdm 4.65.0
+    Uninstalling tqdm-4.65.0:
+      Successfully uninstalled tqdm-4.65.0
+  Attempting uninstall: requests
+    Found existing installation: requests 2.31.0
+    Uninstalling requests-2.31.0:
+      Successfully uninstalled requests-2.31.0
+Successfully installed absl-py-2.1.0 accelerate-1.3.0 acsconv-0.1.1 aiohappyeyeballs-2.4.4 aiohttp-3.11.11 aiosignal-1.3.2 anyio-4.8.0 argon2-cffi-23.1.0 argon2-cffi-bindings-21.2.0 arrow-1.3.0 async-lru-2.0.4 async-timeout-5.0.1 babel-2.16.0 bleach-6.2.0 comm-0.2.2 contourpy-1.3.1 cycler-0.12.1 datasets-3.2.0 debugpy-1.8.12 defusedxml-0.7.1 dill-0.3.8 einops-0.8.0 evaluate-0.4.3 fastjsonschema-2.21.1 fire-0.7.0 fonttools-4.55.3 fqdn-1.5.1 frozenlist-1.5.0 grpcio-1.69.0 h11-0.14.0 httpcore-1.0.7 httpx-0.28.1 huggingface_hub-0.27.1 imageio-2.36.1 ipykernel-6.29.5 isoduration-20.11.0 joblib-1.4.2 json5-0.10.0 jupyter-client-8.6.3 jupyter-core-5.7.2 jupyter-events-0.11.0 jupyter-lsp-2.2.5 jupyter-server-2.15.0 jupyter-server-terminals-0.5.3 jupyterlab-4.3.4 jupyterlab-pygments-0.3.0 jupyterlab-server-2.27.3 kaggle-1.6.17 kiwisolver-1.4.8 lazy-loader-0.4 lightning-utilities-0.11.9 markdown-3.7 matplotlib-3.10.0 medmnist-3.0.2 mistune-3.1.0 monai-1.4.0 multidict-6.1.0 multiprocess-0.70.16 nbclient-0.10.2 nbconvert-7.16.5 nbformat-5.10.4 nest-asyncio-1.6.0 notebook-shim-0.2.4 overrides-7.7.0 pandas-2.2.3 pandocfilters-1.5.1 pooch-1.8.2 prometheus-client-0.21.1 propcache-0.2.1 protobuf-5.29.3 pyarrow-19.0.0 pyparsing-3.2.1 python-dateutil-2.9.0.post0 python-json-logger-3.2.1 python-slugify-8.0.4 pyzmq-26.2.0 regex-2024.11.6 requests-2.32.3 rfc3339-validator-0.1.4 rfc3986-validator-0.1.1 safetensors-0.5.2 scikit-image-0.25.0 scikit-learn-1.6.1 scipy-1.15.1 send2trash-1.8.3 sniffio-1.3.1 tensorboard-2.18.0 tensorboard-data-server-0.7.2 tensorboardx-2.6.2.2 termcolor-2.5.0 terminado-0.18.1 text-unidecode-1.3 threadpoolctl-3.5.0 tifffile-2025.1.10 timm-1.0.14 tinycss2-1.4.0 tokenizers-0.21.0 torchmetrics-1.6.1 torchsummary-1.5.1 tornado-6.4.2 tqdm-4.67.1 transformers-4.48.0 types-python-dateutil-2.9.0.20241206 tzdata-2024.2 uri-template-1.3.0 webcolors-24.11.1 webencodings-0.5.1 websocket-client-1.8.0 werkzeug-3.1.3 xxhash-3.5.0 yarl-1.18.3
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+useradd: warning: the home directory /mnt/hdd/marina already exists.
+useradd: Not copying any file from skel directory into it.
+GPU 0: NVIDIA GeForce RTX 3090 (UUID: GPU-e44b8865-a90e-bee2-f000-8e576cbfee9a)
+[I 2025-01-19 23:57:23.515 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2025-01-19 23:57:23.517 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2025-01-19 23:57:23.519 ServerApp] jupyterlab | extension was successfully linked.
+/opt/conda/lib/python3.10/site-packages/IPython/paths.py:69: UserWarning: IPython parent '/mnt/hdd/marina' is not a writable location, using a temp directory.
+  warn("IPython parent '{0}' is not a writable location,"
+[I 2025-01-19 23:57:23.642 ServerApp] notebook_shim | extension was successfully linked.
+[I 2025-01-19 23:57:23.649 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2025-01-19 23:57:23.651 ServerApp] jupyter_lsp | extension was successfully loaded.
+[I 2025-01-19 23:57:23.652 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2025-01-19 23:57:23.652 LabApp] JupyterLab extension loaded from /opt/conda/lib/python3.10/site-packages/jupyterlab
+[I 2025-01-19 23:57:23.652 LabApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+[I 2025-01-19 23:57:23.652 LabApp] Extension Manager is 'pypi'.
+[I 2025-01-19 23:57:23.676 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2025-01-19 23:57:23.676 ServerApp] Serving notebooks from local directory: /mnt/hdd/marina/workspace/2D-to-3D-Pretraining
+[I 2025-01-19 23:57:23.676 ServerApp] Jupyter Server 2.15.0 is running at:
+[I 2025-01-19 23:57:23.676 ServerApp] http://5d1e1a7a4c4c:9999/lab?token=066bcd27e240e919e3fef95eb18a5d03a167b055f5779cab
+[I 2025-01-19 23:57:23.676 ServerApp]     http://127.0.0.1:9999/lab?token=066bcd27e240e919e3fef95eb18a5d03a167b055f5779cab
+[I 2025-01-19 23:57:23.676 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 2025-01-19 23:57:23.717 ServerApp] No web browser found: Error('could not locate runnable browser').
+[C 2025-01-19 23:57:23.717 ServerApp] 
+    
+    To access the server, open this file in a browser:
+        file:///mnt/hdd/marina/.local/share/jupyter/runtime/jpserver-345-open.html
+    Or copy and paste one of these URLs:
+        http://5d1e1a7a4c4c:9999/lab?token=066bcd27e240e919e3fef95eb18a5d03a167b055f5779cab
+        http://127.0.0.1:9999/lab?token=066bcd27e240e919e3fef95eb18a5d03a167b055f5779cab
+[I 2025-01-19 23:57:23.727 ServerApp] Skipped non-installed server(s): bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[I 2025-01-19 23:57:29.113 ServerApp] 302 GET / (@93.54.78.147) 0.28ms
+/opt/conda/lib/python3.10/site-packages/IPython/paths.py:69: UserWarning: IPython parent '/mnt/hdd/marina' is not a writable location, using a temp directory.
+  warn("IPython parent '{0}' is not a writable location,"
+[W 2025-01-19 23:57:31.836 LabApp] Could not determine jupyterlab build status without nodejs
+[W 2025-01-19 23:57:32.258 ServerApp] 404 GET /api/contents/MedMNIST_MONAI-3channels-Copy1.ipynb?content=0&hash=0&1737331052025 (7513fc11f519406aa6bf2ebb9b41ac6a@93.54.78.147) 1.89ms referer=http://134.60.70.133:9999/lab?
+[W 2025-01-19 23:57:32.258 ServerApp] 404 GET /api/contents/MedMNIST_MONAI-3channels-Copy1.ipynb?content=0&hash=0&1737331052025 (93.54.78.147): No such file or directory: MedMNIST_MONAI-3channels-Copy1.ipynb
+[W 2025-01-19 23:57:32.314 ServerApp] 404 GET /api/contents/MedMNIST_MONAI-3channels-Copy1.ipynb?content=0&hash=0&1737331052027 (7513fc11f519406aa6bf2ebb9b41ac6a@93.54.78.147) 0.55ms referer=http://134.60.70.133:9999/lab?
+[W 2025-01-19 23:57:32.314 ServerApp] 404 GET /api/contents/MedMNIST_MONAI-3channels-Copy1.ipynb?content=0&hash=0&1737331052027 (93.54.78.147): No such file or directory: MedMNIST_MONAI-3channels-Copy1.ipynb
+[I 2025-01-19 23:57:37.132 ServerApp] Kernel started: 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954
+/opt/conda/lib/python3.10/site-packages/IPython/paths.py:69: UserWarning: IPython parent '/mnt/hdd/marina' is not a writable location, using a temp directory.
+  warn("IPython parent '{0}' is not a writable location,"
+[I 2025-01-19 23:57:37.447 ServerApp] Kernel started: 8a9cc31d-548d-4433-8017-37b0adb7bb93
+[I 2025-01-19 23:57:37.484 ServerApp] Connecting to kernel 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954.
+[I 2025-01-19 23:57:37.592 ServerApp] Connecting to kernel 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954.
+/opt/conda/lib/python3.10/site-packages/IPython/paths.py:69: UserWarning: IPython parent '/mnt/hdd/marina' is not a writable location, using a temp directory.
+  warn("IPython parent '{0}' is not a writable location,"
+[I 2025-01-19 23:57:37.699 ServerApp] Connecting to kernel 8a9cc31d-548d-4433-8017-37b0adb7bb93.
+[I 2025-01-19 23:57:37.814 ServerApp] Connecting to kernel 8a9cc31d-548d-4433-8017-37b0adb7bb93.
+[I 2025-01-19 23:57:40.125 ServerApp] Kernel started: e8f5fc57-a17f-4b10-9717-3d297a5d0afb
+/opt/conda/lib/python3.10/site-packages/IPython/paths.py:69: UserWarning: IPython parent '/mnt/hdd/marina' is not a writable location, using a temp directory.
+  warn("IPython parent '{0}' is not a writable location,"
+[I 2025-01-19 23:57:40.363 ServerApp] Connecting to kernel e8f5fc57-a17f-4b10-9717-3d297a5d0afb.
+[I 2025-01-20 00:04:01.980 ServerApp] 302 GET / (@65.49.1.91) 0.45ms
+[I 2025-01-20 00:04:11.384 ServerApp] 302 GET / (@65.49.1.81) 0.34ms
+[I 2025-01-20 00:04:11.531 LabApp] 302 GET /lab? (@65.49.1.81) 0.50ms
+[I 2025-01-20 00:54:08.403 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 00:56:19.989 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 00:58:34.860 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:01:14.137 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:03:25.262 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:05:37.559 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:07:56.641 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:10:52.139 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:13:04.563 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:15:16.933 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:17:30.558 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:19:44.111 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:22:09.838 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:24:21.733 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:26:33.090 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:28:44.816 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:30:56.512 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:33:07.076 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:35:17.851 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:43:29.181 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:45:39.599 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:47:50.671 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:50:01.625 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:52:14.241 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 01:54:29.571 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 02:06:42.408 ServerApp] Starting buffering for 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954:803d370f-0a63-4e68-8f91-a147f2b7d811
+[I 2025-01-20 02:06:42.409 ServerApp] Starting buffering for 8a9cc31d-548d-4433-8017-37b0adb7bb93:7a4931a5-0cf5-4e95-b99d-d678f7ab82ad
+[I 2025-01-20 02:06:42.413 ServerApp] Starting buffering for e8f5fc57-a17f-4b10-9717-3d297a5d0afb:7e1a5b01-c460-4b8d-aaaf-84b4ae33690d
+[E 2025-01-20 11:01:11.997 ServerApp] Uncaught exception in write_error
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1753, in _execute
+        raise HTTPError(405)
+    tornado.web.HTTPError: HTTP 405: Method Not Allowed
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1298, in send_error
+        self.write_error(status_code, **kwargs)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 740, in write_error
+        html = self.render_template("%s.html" % status_code, **ns)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 666, in render_template
+        ns.update(self.template_namespace)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 676, in template_namespace
+        logged_in=self.logged_in,
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 199, in logged_in
+        user = self.current_user
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1424, in current_user
+        self._current_user = self.get_current_user()
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 178, in get_current_user
+        raise RuntimeError(msg)
+    RuntimeError: Calling `Template404.get_current_user()` directly is deprecated in jupyter-server 2.0. Use `self.current_user` instead (works in all versions).
+[W 2025-01-20 11:01:11.998 ServerApp] 405 CONNECT 193.149.189.126:7227 (@194.48.251.14) 1.60ms referer=None
+[I 2025-01-20 11:26:10.087 ServerApp] 302 GET / (@167.94.138.35) 0.34ms
+[I 2025-01-20 11:26:14.262 ServerApp] Malformed HTTP message from 167.94.138.35: Malformed HTTP version in HTTP Request-Line: 'HTTP/2.0'
+[I 2025-01-20 11:26:36.309 LabApp] 302 GET /lab (@167.94.138.35) 0.46ms
+[I 2025-01-20 11:26:39.032 ServerApp] Malformed HTTP message from 167.94.138.35: Malformed HTTP version in HTTP Request-Line: 'HTTP/2.0'
+[I 2025-01-20 11:26:43.939 ServerApp] 302 GET / (@167.94.138.35) 0.34ms
+[I 2025-01-20 11:27:14.586 ServerApp] Malformed HTTP message from 167.94.138.35: Malformed HTTP version in HTTP Request-Line: 'HTTP/2.0'
+[I 2025-01-20 11:27:16.493 ServerApp] 302 GET / (@167.94.138.35) 0.32ms
+[I 2025-01-20 14:01:26.732 ServerApp] Connecting to kernel 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954.
+[I 2025-01-20 14:01:26.732 ServerApp] Restoring connection for 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954:803d370f-0a63-4e68-8f91-a147f2b7d811
+[I 2025-01-20 14:01:26.849 ServerApp] Connecting to kernel 8a9cc31d-548d-4433-8017-37b0adb7bb93.
+[I 2025-01-20 14:01:26.849 ServerApp] Restoring connection for 8a9cc31d-548d-4433-8017-37b0adb7bb93:7a4931a5-0cf5-4e95-b99d-d678f7ab82ad
+[I 2025-01-20 14:01:26.975 ServerApp] Connecting to kernel e8f5fc57-a17f-4b10-9717-3d297a5d0afb.
+[I 2025-01-20 14:01:26.976 ServerApp] Restoring connection for e8f5fc57-a17f-4b10-9717-3d297a5d0afb:7e1a5b01-c460-4b8d-aaaf-84b4ae33690d
+[I 2025-01-20 14:01:41.691 ServerApp] Kernel interrupted: 8a9cc31d-548d-4433-8017-37b0adb7bb93
+[I 2025-01-20 14:03:37.795 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:05:48.662 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:07:59.870 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:10:10.688 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:12:20.979 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:14:31.810 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:16:42.253 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:18:52.736 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:21:03.853 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:23:14.398 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:25:25.126 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:26:10.639 ServerApp] 302 GET / (@52.189.75.209) 0.30ms
+[I 2025-01-20 14:27:36.182 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:31:47.634 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-20 14:33:58.948 ServerApp] Saving file at /full_volume_training.ipynb
+[W 2025-01-20 16:32:56.734 ServerApp] WebSocket ping timeout after 119950 ms.
+[W 2025-01-20 16:32:56.850 ServerApp] WebSocket ping timeout after 119954 ms.
+[W 2025-01-20 16:32:56.977 ServerApp] WebSocket ping timeout after 119954 ms.
+[I 2025-01-20 16:33:01.735 ServerApp] Starting buffering for 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954:803d370f-0a63-4e68-8f91-a147f2b7d811
+[I 2025-01-20 16:33:01.851 ServerApp] Starting buffering for 8a9cc31d-548d-4433-8017-37b0adb7bb93:7a4931a5-0cf5-4e95-b99d-d678f7ab82ad
+[I 2025-01-20 16:33:01.978 ServerApp] Starting buffering for e8f5fc57-a17f-4b10-9717-3d297a5d0afb:7e1a5b01-c460-4b8d-aaaf-84b4ae33690d
+[E 2025-01-20 16:58:07.823 ServerApp] Uncaught exception in write_error
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1753, in _execute
+        raise HTTPError(405)
+    tornado.web.HTTPError: HTTP 405: Method Not Allowed
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1298, in send_error
+        self.write_error(status_code, **kwargs)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 740, in write_error
+        html = self.render_template("%s.html" % status_code, **ns)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 666, in render_template
+        ns.update(self.template_namespace)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 676, in template_namespace
+        logged_in=self.logged_in,
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 199, in logged_in
+        user = self.current_user
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1424, in current_user
+        self._current_user = self.get_current_user()
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 178, in get_current_user
+        raise RuntimeError(msg)
+    RuntimeError: Calling `Template404.get_current_user()` directly is deprecated in jupyter-server 2.0. Use `self.current_user` instead (works in all versions).
+[W 2025-01-20 16:58:07.824 ServerApp] 405 CONNECT web.realsysadm.in:443 (@51.15.19.173) 0.75ms referer=None
+[E 2025-01-20 19:47:11.020 ServerApp] Uncaught exception in write_error
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1753, in _execute
+        raise HTTPError(405)
+    tornado.web.HTTPError: HTTP 405: Method Not Allowed
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1298, in send_error
+        self.write_error(status_code, **kwargs)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 740, in write_error
+        html = self.render_template("%s.html" % status_code, **ns)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 666, in render_template
+        ns.update(self.template_namespace)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 676, in template_namespace
+        logged_in=self.logged_in,
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 199, in logged_in
+        user = self.current_user
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1424, in current_user
+        self._current_user = self.get_current_user()
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 178, in get_current_user
+        raise RuntimeError(msg)
+    RuntimeError: Calling `Template404.get_current_user()` directly is deprecated in jupyter-server 2.0. Use `self.current_user` instead (works in all versions).
+[W 2025-01-20 19:47:11.020 ServerApp] 405 CONNECT google.com:443 (@89.248.174.186) 0.70ms referer=None
+[I 2025-01-20 20:45:08.114 ServerApp] Connecting to kernel 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954.
+[I 2025-01-20 20:45:08.114 ServerApp] Restoring connection for 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954:803d370f-0a63-4e68-8f91-a147f2b7d811
+[I 2025-01-20 20:45:08.301 ServerApp] Connecting to kernel 8a9cc31d-548d-4433-8017-37b0adb7bb93.
+[I 2025-01-20 20:45:08.301 ServerApp] Restoring connection for 8a9cc31d-548d-4433-8017-37b0adb7bb93:7a4931a5-0cf5-4e95-b99d-d678f7ab82ad
+[I 2025-01-20 20:45:08.679 ServerApp] Connecting to kernel e8f5fc57-a17f-4b10-9717-3d297a5d0afb.
+[I 2025-01-20 20:45:08.680 ServerApp] Restoring connection for e8f5fc57-a17f-4b10-9717-3d297a5d0afb:7e1a5b01-c460-4b8d-aaaf-84b4ae33690d
+[I 2025-01-21 02:25:24.828 ServerApp] Starting buffering for e8f5fc57-a17f-4b10-9717-3d297a5d0afb:7e1a5b01-c460-4b8d-aaaf-84b4ae33690d
+[I 2025-01-21 02:25:24.839 ServerApp] Starting buffering for 8a9cc31d-548d-4433-8017-37b0adb7bb93:7a4931a5-0cf5-4e95-b99d-d678f7ab82ad
+[I 2025-01-21 02:25:24.852 ServerApp] Starting buffering for 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954:803d370f-0a63-4e68-8f91-a147f2b7d811
+[I 2025-01-21 03:14:33.184 ServerApp] 302 GET / (@64.62.197.18) 0.34ms
+[I 2025-01-21 03:14:42.728 ServerApp] 302 GET / (@64.62.197.21) 0.34ms
+[I 2025-01-21 03:14:42.874 LabApp] 302 GET /lab? (@64.62.197.21) 0.44ms
+[W 2025-01-21 04:53:27.647 ServerApp] 404 HEAD http://112.124.42.80:63435/ (@60.191.125.35) 4.45ms referer=None
+[W 2025-01-21 05:23:51.606 ServerApp] 404 GET http://clientapi.ipip.net/echo.php?info=20250121052351 (@103.203.57.24) 1.15ms referer=None
+[E 2025-01-21 07:45:12.797 ServerApp] Uncaught exception in write_error
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1753, in _execute
+        raise HTTPError(405)
+    tornado.web.HTTPError: HTTP 405: Method Not Allowed
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1298, in send_error
+        self.write_error(status_code, **kwargs)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 740, in write_error
+        html = self.render_template("%s.html" % status_code, **ns)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 666, in render_template
+        ns.update(self.template_namespace)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 676, in template_namespace
+        logged_in=self.logged_in,
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 199, in logged_in
+        user = self.current_user
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1424, in current_user
+        self._current_user = self.get_current_user()
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 178, in get_current_user
+        raise RuntimeError(msg)
+    RuntimeError: Calling `Template404.get_current_user()` directly is deprecated in jupyter-server 2.0. Use `self.current_user` instead (works in all versions).
+[W 2025-01-21 07:45:12.797 ServerApp] 405 CONNECT web.realsysadm.in:443 (@51.15.19.173) 0.64ms referer=None
+[E 2025-01-21 12:17:01.316 ServerApp] Uncaught exception in write_error
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1753, in _execute
+        raise HTTPError(405)
+    tornado.web.HTTPError: HTTP 405: Method Not Allowed
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1298, in send_error
+        self.write_error(status_code, **kwargs)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 740, in write_error
+        html = self.render_template("%s.html" % status_code, **ns)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 666, in render_template
+        ns.update(self.template_namespace)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 676, in template_namespace
+        logged_in=self.logged_in,
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 199, in logged_in
+        user = self.current_user
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1424, in current_user
+        self._current_user = self.get_current_user()
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 178, in get_current_user
+        raise RuntimeError(msg)
+    RuntimeError: Calling `Template404.get_current_user()` directly is deprecated in jupyter-server 2.0. Use `self.current_user` instead (works in all versions).
+[W 2025-01-21 12:17:01.317 ServerApp] 405 CONNECT 193.149.189.126:7227 (@178.215.236.21) 0.59ms referer=None
+[I 2025-01-21 14:59:20.817 ServerApp] 302 GET / (@217.142.184.125) 0.30ms
+[I 2025-01-21 14:59:21.063 LabApp] 302 GET /lab (@217.142.184.125) 0.43ms
+[I 2025-01-21 15:17:39.490 ServerApp] 302 GET / (@206.168.34.47) 0.31ms
+[I 2025-01-21 15:17:39.866 ServerApp] Malformed HTTP message from 206.168.34.47: Malformed HTTP version in HTTP Request-Line: 'HTTP/2.0'
+[I 2025-01-21 15:17:44.395 LabApp] 302 GET /lab (@206.168.34.47) 0.46ms
+[I 2025-01-21 15:17:44.889 ServerApp] Malformed HTTP message from 206.168.34.47: Malformed HTTP version in HTTP Request-Line: 'HTTP/2.0'
+[I 2025-01-21 15:17:45.200 ServerApp] 302 GET / (@206.168.34.47) 0.31ms
+[I 2025-01-21 15:17:49.919 ServerApp] Malformed HTTP message from 206.168.34.47: Malformed HTTP version in HTTP Request-Line: 'HTTP/2.0'
+[I 2025-01-21 15:17:50.142 ServerApp] 302 GET / (@206.168.34.47) 0.33ms
+[E 2025-01-21 17:04:10.169 ServerApp] Uncaught exception in write_error
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1753, in _execute
+        raise HTTPError(405)
+    tornado.web.HTTPError: HTTP 405: Method Not Allowed
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1298, in send_error
+        self.write_error(status_code, **kwargs)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 740, in write_error
+        html = self.render_template("%s.html" % status_code, **ns)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 666, in render_template
+        ns.update(self.template_namespace)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 676, in template_namespace
+        logged_in=self.logged_in,
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 199, in logged_in
+        user = self.current_user
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1424, in current_user
+        self._current_user = self.get_current_user()
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 178, in get_current_user
+        raise RuntimeError(msg)
+    RuntimeError: Calling `Template404.get_current_user()` directly is deprecated in jupyter-server 2.0. Use `self.current_user` instead (works in all versions).
+[W 2025-01-21 17:04:10.169 ServerApp] 405 CONNECT 45.61.137.126:7227 (@194.48.251.4) 0.63ms referer=None
+[I 2025-01-21 21:01:54.706 ServerApp] Connecting to kernel e8f5fc57-a17f-4b10-9717-3d297a5d0afb.
+[I 2025-01-21 21:01:54.706 ServerApp] Restoring connection for e8f5fc57-a17f-4b10-9717-3d297a5d0afb:7e1a5b01-c460-4b8d-aaaf-84b4ae33690d
+[I 2025-01-21 21:01:54.822 ServerApp] Connecting to kernel 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954.
+[I 2025-01-21 21:01:54.822 ServerApp] Restoring connection for 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954:803d370f-0a63-4e68-8f91-a147f2b7d811
+[I 2025-01-21 21:02:11.714 ServerApp] Connecting to kernel 8a9cc31d-548d-4433-8017-37b0adb7bb93.
+[I 2025-01-21 21:02:11.715 ServerApp] Restoring connection for 8a9cc31d-548d-4433-8017-37b0adb7bb93:7a4931a5-0cf5-4e95-b99d-d678f7ab82ad
+[I 2025-01-21 22:03:33.788 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:07:19.634 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:11:22.790 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:17:03.083 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:19:55.016 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:23:28.199 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:28:48.702 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:32:28.328 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:34:53.230 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:37:24.863 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:39:14.450 ServerApp] Kernel interrupted: 8a9cc31d-548d-4433-8017-37b0adb7bb93
+[I 2025-01-21 22:39:27.514 ServerApp] Kernel interrupted: 8a9cc31d-548d-4433-8017-37b0adb7bb93
+[I 2025-01-21 22:39:45.679 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:42:19.133 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:45:00.692 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:47:25.730 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:49:48.025 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 22:52:33.345 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:00:42.079 ServerApp] 302 GET / (@199.45.154.149) 0.45ms
+[I 2025-01-21 23:00:51.743 ServerApp] 302 GET / (@199.45.154.149) 0.37ms
+[I 2025-01-21 23:00:52.359 ServerApp] Malformed HTTP message from 199.45.154.149: Malformed HTTP version in HTTP Request-Line: 'HTTP/2.0'
+[I 2025-01-21 23:01:00.033 LabApp] 302 GET /lab (@199.45.154.149) 0.49ms
+[I 2025-01-21 23:01:00.638 ServerApp] Malformed HTTP message from 199.45.154.149: Malformed HTTP version in HTTP Request-Line: 'HTTP/2.0'
+[I 2025-01-21 23:01:01.191 ServerApp] 302 GET / (@199.45.154.149) 0.35ms
+[I 2025-01-21 23:01:07.205 ServerApp] Malformed HTTP message from 199.45.154.149: Malformed HTTP version in HTTP Request-Line: 'HTTP/2.0'
+[I 2025-01-21 23:01:07.720 ServerApp] 302 GET / (@199.45.154.149) 0.35ms
+[I 2025-01-21 23:13:23.750 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:15:40.469 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:18:07.651 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:20:29.679 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:23:39.398 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:26:00.727 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:28:16.187 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:30:57.013 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:33:08.671 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:35:19.787 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:37:31.665 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:39:50.432 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:43:08.958 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:45:20.410 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:47:32.768 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:49:46.700 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:52:15.753 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:55:05.071 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-21 23:57:57.877 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:00:47.368 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:03:10.397 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:05:22.947 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:07:39.486 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:10:34.768 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:12:52.108 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:15:04.387 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:17:23.916 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:19:49.080 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:24:14.156 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:27:15.435 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:37:06.092 ServerApp] Kernel interrupted: 8a9cc31d-548d-4433-8017-37b0adb7bb93
+[I 2025-01-22 00:37:53.138 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:40:08.846 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:42:19.543 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:44:31.232 ServerApp] Saving file at /full_volume_training.ipynb
+[W 2025-01-22 00:44:31.467 ServerApp] /mnt/hdd/marina/workspace/2D-to-3D-Pretraining/.~full_volume_training.ipynb doesn't exist
+[I 2025-01-22 00:46:41.700 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:48:52.741 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:51:03.632 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:53:13.875 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:55:27.159 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 00:57:52.830 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:00:19.281 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:02:34.143 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:04:52.089 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:07:18.079 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:09:28.564 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:11:41.852 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:14:05.709 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:16:16.214 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:18:26.424 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:20:40.162 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:23:17.309 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:26:47.481 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:29:01.366 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:31:11.595 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:33:22.080 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:35:32.859 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:37:44.055 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:39:55.852 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:42:16.180 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:45:51.958 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:48:02.534 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:50:13.537 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 01:58:23.442 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:00:33.966 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:02:48.535 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:05:27.431 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:07:48.200 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:10:00.430 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:12:10.237 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:14:20.080 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:16:30.296 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:18:40.333 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:20:50.603 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:23:04.159 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:25:31.189 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:27:41.983 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:29:53.353 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:32:04.570 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:34:15.257 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:36:28.377 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:38:52.379 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:41:03.855 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:43:15.521 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:45:26.802 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:47:36.930 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:49:47.266 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:51:57.447 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:54:07.863 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:56:17.998 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 02:58:28.525 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 03:00:39.161 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 03:02:52.642 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 03:05:20.187 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 03:07:42.217 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 03:10:14.683 ServerApp] Saving file at /full_volume_training.ipynb
+[I 2025-01-22 04:46:46.233 ServerApp] 302 GET / (@2.57.122.236) 0.45ms
+[I 2025-01-22 04:46:46.261 LabApp] 302 GET /lab? (@2.57.122.236) 0.64ms
+[I 2025-01-22 08:44:36.762 ServerApp] 302 GET / (@206.168.34.43) 0.35ms
+[I 2025-01-22 08:44:46.423 ServerApp] 302 GET / (@206.168.34.43) 0.35ms
+[I 2025-01-22 08:44:47.343 ServerApp] Malformed HTTP message from 206.168.34.43: Malformed HTTP version in HTTP Request-Line: 'HTTP/2.0'
+[I 2025-01-22 08:44:52.306 LabApp] 302 GET /lab (@206.168.34.43) 0.49ms
+[I 2025-01-22 08:44:52.539 ServerApp] Malformed HTTP message from 206.168.34.43: Malformed HTTP version in HTTP Request-Line: 'HTTP/2.0'
+[I 2025-01-22 08:44:52.784 ServerApp] 302 GET / (@206.168.34.43) 0.34ms
+[I 2025-01-22 08:44:57.036 ServerApp] Malformed HTTP message from 206.168.34.43: Malformed HTTP version in HTTP Request-Line: 'HTTP/2.0'
+[I 2025-01-22 08:44:57.259 ServerApp] 302 GET / (@206.168.34.43) 0.34ms
+[I 2025-01-22 10:16:41.718 ServerApp] 302 GET / (@80.82.77.139) 0.34ms
+[I 2025-01-22 10:16:41.744 LabApp] 302 GET /lab (@80.82.77.139) 0.42ms
+[I 2025-01-22 10:54:45.226 ServerApp] 302 GET / (@64.62.156.119) 0.34ms
+[I 2025-01-22 10:54:54.887 ServerApp] 302 GET / (@64.62.156.118) 0.41ms
+[I 2025-01-22 10:54:55.033 LabApp] 302 GET /lab? (@64.62.156.118) 0.31ms
+[E 2025-01-22 11:31:27.598 ServerApp] Uncaught exception in write_error
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1753, in _execute
+        raise HTTPError(405)
+    tornado.web.HTTPError: HTTP 405: Method Not Allowed
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1298, in send_error
+        self.write_error(status_code, **kwargs)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 740, in write_error
+        html = self.render_template("%s.html" % status_code, **ns)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 666, in render_template
+        ns.update(self.template_namespace)
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 676, in template_namespace
+        logged_in=self.logged_in,
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 199, in logged_in
+        user = self.current_user
+      File "/opt/conda/lib/python3.10/site-packages/tornado/web.py", line 1424, in current_user
+        self._current_user = self.get_current_user()
+      File "/opt/conda/lib/python3.10/site-packages/jupyter_server/base/handlers.py", line 178, in get_current_user
+        raise RuntimeError(msg)
+    RuntimeError: Calling `Template404.get_current_user()` directly is deprecated in jupyter-server 2.0. Use `self.current_user` instead (works in all versions).
+[W 2025-01-22 11:31:27.598 ServerApp] 405 CONNECT 45.61.136.175:7227 (@94.156.167.77) 0.74ms referer=None
+[I 2025-01-22 14:38:18.311 ServerApp] Kernel started: 4146c1cf-bdb6-4b4f-b65b-725880eecda4
+/opt/conda/lib/python3.10/site-packages/IPython/paths.py:69: UserWarning: IPython parent '/mnt/hdd/marina' is not a writable location, using a temp directory.
+  warn("IPython parent '{0}' is not a writable location,"
+[I 2025-01-22 14:38:18.605 ServerApp] Connecting to kernel 4146c1cf-bdb6-4b4f-b65b-725880eecda4.
+[I 2025-01-22 14:57:27.297 ServerApp] Starting buffering for 4146c1cf-bdb6-4b4f-b65b-725880eecda4:4450912b-61a0-4149-9dec-3567db0c8430
+[I 2025-01-22 14:57:27.302 ServerApp] Starting buffering for 8a9cc31d-548d-4433-8017-37b0adb7bb93:7a4931a5-0cf5-4e95-b99d-d678f7ab82ad
+[I 2025-01-22 14:57:27.303 ServerApp] Starting buffering for 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954:803d370f-0a63-4e68-8f91-a147f2b7d811
+[I 2025-01-22 14:57:27.307 ServerApp] Starting buffering for e8f5fc57-a17f-4b10-9717-3d297a5d0afb:7e1a5b01-c460-4b8d-aaaf-84b4ae33690d
+[I 2025-01-22 15:12:30.301 ServerApp] Connecting to kernel 8a9cc31d-548d-4433-8017-37b0adb7bb93.
+[I 2025-01-22 15:12:30.302 ServerApp] Restoring connection for 8a9cc31d-548d-4433-8017-37b0adb7bb93:7a4931a5-0cf5-4e95-b99d-d678f7ab82ad
+[I 2025-01-22 15:12:31.119 ServerApp] Connecting to kernel 4146c1cf-bdb6-4b4f-b65b-725880eecda4.
+[I 2025-01-22 15:12:31.119 ServerApp] Restoring connection for 4146c1cf-bdb6-4b4f-b65b-725880eecda4:4450912b-61a0-4149-9dec-3567db0c8430
+[I 2025-01-22 15:12:31.230 ServerApp] Connecting to kernel e8f5fc57-a17f-4b10-9717-3d297a5d0afb.
+[I 2025-01-22 15:12:31.230 ServerApp] Restoring connection for e8f5fc57-a17f-4b10-9717-3d297a5d0afb:7e1a5b01-c460-4b8d-aaaf-84b4ae33690d
+[I 2025-01-22 15:12:31.352 ServerApp] Connecting to kernel 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954.
+[I 2025-01-22 15:12:31.352 ServerApp] Restoring connection for 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954:803d370f-0a63-4e68-8f91-a147f2b7d811
+[I 2025-01-22 16:41:20.770 ServerApp] 302 GET / (@139.59.164.185) 0.37ms
+[I 2025-01-22 16:41:21.198 LabApp] 302 GET /lab? (@139.59.164.185) 0.48ms
+[W 2025-01-22 16:41:22.238 ServerApp] 404 GET //static/favicon.ico?v=50afa725b5de8b00030139d09b38620224d4e7dba47c07ef0e86d4643f30c9bfe6bb7e1a4a1c561aa32834480909a4b6fe7cd1e17f7159330b6b5914bf45a880 (@139.59.164.185) 0.71ms referer=None
+[I 2025-01-22 16:51:31.514 ServerApp] Starting buffering for 4e2b28b8-a37c-48bb-bfa9-8e4ed0800954:803d370f-0a63-4e68-8f91-a147f2b7d811
+[I 2025-01-22 16:51:31.524 ServerApp] Starting buffering for 4146c1cf-bdb6-4b4f-b65b-725880eecda4:4450912b-61a0-4149-9dec-3567db0c8430
+[I 2025-01-22 16:51:31.525 ServerApp] Starting buffering for e8f5fc57-a17f-4b10-9717-3d297a5d0afb:7e1a5b01-c460-4b8d-aaaf-84b4ae33690d
+[I 2025-01-22 16:51:31.525 ServerApp] Starting buffering for 8a9cc31d-548d-4433-8017-37b0adb7bb93:7a4931a5-0cf5-4e95-b99d-d678f7ab82ad
+slurmstepd: error: *** JOB 25191 ON worker2 CANCELLED AT 2025-01-23T00:56:59 DUE TO TIME LIMIT ***
