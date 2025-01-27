@@ -1,72 +1,0 @@
-Prolog...
-================================================================================
-Running on worker5. This worker has IP 134.60.70.136/24
-Running as marina, with groups: students docker
-Job ID: 24314
-CUDA_VISIBLE_DEVICES: 0
-Using CPU Cores 0-9
-Using 64000 MiB RAM
-================================================================================
-docker run -i --rm --pull=always --ipc=host -e XDG_CACHE_HOME=/tmp/cache --name slurm_24314 --cpuset-cpus 0-9 --memory 64000m --gpus '"device=0"' -w /mnt/hdd/marina/workspace/2D-to-3D-Pretraining -v /mnt/hdd/marina:/mnt/hdd/marina -p 0.0.0.0:9999:9999 pytorch/pytorch:latest bash -c '{ apt-get update;  DEBIAN_FRONTEND=noninteractive apt-get install -y sudo; python3 -m pip install -r requirement.txt; groupadd --gid 1004 students; useradd --uid 1052 -s /bin/bash --gid 1004 -m -d /mnt/hdd/marina marina; nvidia-smi -L; sudo --set-home --preserve-env=PATH --user=\#1052 -- ./start.sh; }'
-================================================================================
-latest: Pulling from pytorch/pytorch
-Digest: sha256:11691e035a3651d25a87116b4f6adc113a27a29d8f5a6a583f8569e0ee5ff897
-Status: Image is up to date for pytorch/pytorch:latest
-Get:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
-Get:2 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
-Get:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
-Get:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
-Get:5 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [3269 kB]
-Get:6 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
-Get:7 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [44.7 kB]
-Get:8 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1164 kB]
-Get:9 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
-Get:10 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [2420 kB]
-Get:11 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
-Get:12 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
-Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1452 kB]
-Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [51.8 kB]
-Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [3353 kB]
-Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [2700 kB]
-Get:17 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [81.4 kB]
-Get:18 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [33.7 kB]
-Fetched 34.9 MB in 2s (19.2 MB/s)
-Reading package lists...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following NEW packages will be installed:
-  sudo
-0 upgraded, 1 newly installed, 0 to remove and 33 not upgraded.
-Need to get 821 kB of archives.
-After this operation, 2568 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 sudo amd64 1.9.9-1ubuntu2.4 [821 kB]
-debconf: delaying package configuration, since apt-utils is not installed
-Fetched 821 kB in 0s (5122 kB/s)
-Selecting previously unselected package sudo.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6643 files and directories currently installed.)
-Preparing to unpack .../sudo_1.9.9-1ubuntu2.4_amd64.deb ...
-Unpacking sudo (1.9.9-1ubuntu2.4) ...
-Setting up sudo (1.9.9-1ubuntu2.4) ...
-Processing triggers for libc-bin (2.35-0ubuntu3.6) ...
-Collecting jupyterlab (from -r requirement.txt (line 1))
-  Downloading jupyterlab-4.3.0-py3-none-any.whl.metadata (16 kB)
-Requirement already satisfied: numpy>=1.23.5 in /opt/conda/lib/python3.10/site-packages (from -r requirement.txt (line 2)) (1.26.3)
-Collecting matplotlib>=3.5.1 (from -r requirement.txt (line 3))
-  Downloading matplotlib-3.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
-Collecting scipy>=1.9.3 (from -r requirement.txt (line 4))
-  Downloading scipy-1.14.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.8/60.8 kB 2.9 MB/s eta 0:00:00
-Collecting scikit-image>=0.20 (from scikit-image[data]>=0.20->-r requirement.txt (line 5))
-  Downloading scikit_image-0.24.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (14 kB)
-Requirement already satisfied: Pillow>=2.1.0 in /opt/conda/lib/python3.10/site-packages (from -r requirement.txt (line 6)) (10.2.0)
-Requirement already satisfied: torch>=2.0.1 in /opt/conda/lib/python3.10/site-packages (from -r requirement.txt (line 7)) (2.2.1)
-Requirement already satisfied: torchvision in /opt/conda/lib/python3.10/site-packages (from -r requirement.txt (line 8)) (0.17.1)
-ERROR: Ignored the following versions that require a different python version: 1.6.2 Requires-Python >=3.7,<3.10; 1.6.3 Requires-Python >=3.7,<3.10; 1.7.0 Requires-Python >=3.7,<3.10; 1.7.1 Requires-Python >=3.7,<3.10
-ERROR: Could not find a version that satisfies the requirement torchmetrix (from versions: none)
-ERROR: No matching distribution found for torchmetrix
-useradd: warning: the home directory /mnt/hdd/marina already exists.
-useradd: Not copying any file from skel directory into it.
-GPU 0: NVIDIA GeForce RTX 2080 Ti (UUID: GPU-46691a0f-72ba-5a8e-3a3a-d58d1fe25299)
-./start.sh: 1: jupyter-lab: not found
-Error response from daemon: No such container: slurm_24314
