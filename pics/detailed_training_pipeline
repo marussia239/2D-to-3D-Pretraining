@@ -1,0 +1,28 @@
+digraph {
+	Data [label="3D Data
+(Coronal, Sagittal, Axial)" fillcolor=lightgray shape=parallelogram style=filled]
+	ResNet1 [label="ResNet18
+(Front View)" fillcolor=lightblue shape=box style=filled]
+	ResNet2 [label="ResNet18
+(Side View)" fillcolor=lightblue shape=box style=filled]
+	ResNet3 [label="ResNet18
+(Top View)" fillcolor=lightblue shape=box style=filled]
+	BestWeights [label="Save Best Weights" fillcolor=gold shape=parallelogram style=filled]
+	Concat [label=Concatenation fillcolor=lightgreen shape=ellipse style=filled]
+	WeightedConcat [label="Weighted Concatenation" fillcolor=lightgreen shape=ellipse style=filled]
+	FinalTrain [label="Fine-Tuning
+(30 epochs, Full Dataset)" fillcolor=lightcoral shape=box style=filled]
+	Results [label="Final Results
+(Pretrained vs. Non-Pretrained)" fillcolor=lightgray shape=parallelogram style=filled]
+	Data -> ResNet1
+	Data -> ResNet2
+	Data -> ResNet3
+	ResNet1 -> BestWeights
+	ResNet2 -> BestWeights
+	ResNet3 -> BestWeights
+	BestWeights -> Concat
+	BestWeights -> WeightedConcat
+	Concat -> FinalTrain
+	WeightedConcat -> FinalTrain
+	FinalTrain -> Results
+}
