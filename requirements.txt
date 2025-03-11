@@ -22,5 +22,7 @@ fire
 pandas
 tqdm
 acsconv
+ipywidgets
 kaggle
+kagglehub
 evaluate
